@@ -1,6 +1,6 @@
-from flask import Flask, request, jsonify # type: ignore
-import psycopg2 # type: ignore
-import xmltodict # type: ignore
+from flask import Flask, request, jsonify
+import psycopg2 
+import xmltodict 
 
 app = Flask(__name__)
 
@@ -19,6 +19,7 @@ def get_assets():
     conn = connect_db()
     cur = conn.cursor()
     cur.execute('SELECT * FROM assets')
+    rows = cur.fetchall()  # Fetch all the rows from the query result
     assets = cur.fetchall()
     conn.close()
     
